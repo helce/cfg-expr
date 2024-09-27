@@ -10,7 +10,7 @@
 
 use super::*;
 
-pub(crate) const RUSTC_VERSION: &str = "1.80.0";
+pub(crate) const RUSTC_VERSION: &str = "1.81.0";
 
 pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
@@ -1548,6 +1548,19 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         panic: Panic::unwind,
     },
     TargetInfo {
+        triple: Triple::new_const("i686-unknown-redox"),
+        os: Some(Os::redox),
+        abi: None,
+        arch: Arch::x86,
+        env: Some(Env::relibc),
+        vendor: Some(Vendor::unknown),
+        families: Families::unix,
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_64_ptr,
+        panic: Panic::unwind,
+    },
+    TargetInfo {
         triple: Triple::new_const("i686-unknown-uefi"),
         os: Some(Os::uefi),
         abi: None,
@@ -2787,7 +2800,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         os: Some(Os::wasi),
         abi: None,
         arch: Arch::wasm32,
-        env: None,
+        env: Some(Env::p1),
         vendor: Some(Vendor::unknown),
         families: Families::wasm,
         pointer_width: 32,
@@ -2800,7 +2813,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         os: Some(Os::wasi),
         abi: None,
         arch: Arch::wasm32,
-        env: None,
+        env: Some(Env::p1),
         vendor: Some(Vendor::unknown),
         families: Families::wasm,
         pointer_width: 32,
@@ -2813,7 +2826,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         os: Some(Os::wasi),
         abi: None,
         arch: Arch::wasm32,
-        env: None,
+        env: Some(Env::p1),
         vendor: Some(Vendor::unknown),
         families: Families::wasm,
         pointer_width: 32,
@@ -3315,6 +3328,84 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         has_atomics: HasAtomics::atomic_8_16_32_64_128_ptr,
         panic: Panic::unwind,
     },
+    TargetInfo {
+        triple: Triple::new_const("xtensa-esp32-espidf"),
+        os: Some(Os::espidf),
+        abi: None,
+        arch: Arch::xtensa,
+        env: Some(Env::newlib),
+        vendor: Some(Vendor::espressif),
+        families: Families::unix,
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_ptr,
+        panic: Panic::abort,
+    },
+    TargetInfo {
+        triple: Triple::new_const("xtensa-esp32-none-elf"),
+        os: None,
+        abi: None,
+        arch: Arch::xtensa,
+        env: None,
+        vendor: Some(Vendor::unknown),
+        families: Families::new_const(&[]),
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_ptr,
+        panic: Panic::abort,
+    },
+    TargetInfo {
+        triple: Triple::new_const("xtensa-esp32s2-espidf"),
+        os: Some(Os::espidf),
+        abi: None,
+        arch: Arch::xtensa,
+        env: Some(Env::newlib),
+        vendor: Some(Vendor::espressif),
+        families: Families::unix,
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_ptr,
+        panic: Panic::abort,
+    },
+    TargetInfo {
+        triple: Triple::new_const("xtensa-esp32s2-none-elf"),
+        os: None,
+        abi: None,
+        arch: Arch::xtensa,
+        env: None,
+        vendor: Some(Vendor::unknown),
+        families: Families::new_const(&[]),
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::new_const(&[]),
+        panic: Panic::abort,
+    },
+    TargetInfo {
+        triple: Triple::new_const("xtensa-esp32s3-espidf"),
+        os: Some(Os::espidf),
+        abi: None,
+        arch: Arch::xtensa,
+        env: Some(Env::newlib),
+        vendor: Some(Vendor::espressif),
+        families: Families::unix,
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_ptr,
+        panic: Panic::abort,
+    },
+    TargetInfo {
+        triple: Triple::new_const("xtensa-esp32s3-none-elf"),
+        os: None,
+        abi: None,
+        arch: Arch::xtensa,
+        env: None,
+        vendor: Some(Vendor::unknown),
+        families: Families::new_const(&[]),
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_ptr,
+        panic: Panic::abort,
+    },
 ];
 
 impl super::Abi {
@@ -3364,6 +3455,7 @@ impl super::Arch {
     pub const wasm64: Arch = Arch::new_const("wasm64");
     pub const x86: Arch = Arch::new_const("x86");
     pub const x86_64: Arch = Arch::new_const("x86_64");
+    pub const xtensa: Arch = Arch::new_const("xtensa");
 }
 
 impl super::Vendor {
@@ -3450,6 +3542,7 @@ impl super::Env {
     pub const nto70: Env = Env::new_const("nto70");
     pub const nto71: Env = Env::new_const("nto71");
     pub const ohos: Env = Env::new_const("ohos");
+    pub const p1: Env = Env::new_const("p1");
     pub const p2: Env = Env::new_const("p2");
     pub const psx: Env = Env::new_const("psx");
     pub const relibc: Env = Env::new_const("relibc");
