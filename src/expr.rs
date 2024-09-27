@@ -120,6 +120,7 @@ impl TargetMatcher for target_lexicon::Triple {
                     match arch.0.parse::<Architecture>() {
                         Ok(a) => match (self.architecture, a) {
                             (Architecture::Aarch64(_), Architecture::Aarch64(_))
+                            | (Architecture::E2k(_), Architecture::E2k(_))
                             | (Architecture::Mips32(_), Architecture::Mips32(_))
                             | (Architecture::Mips64(_), Architecture::Mips64(_))
                             | (Architecture::Powerpc64le, Architecture::Powerpc64)
