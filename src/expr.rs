@@ -124,6 +124,20 @@ impl TargetMatcher for target_lexicon::Triple {
                 } else if arch == &targ::Arch::x86_64 {
                     self.architecture == Architecture::X86_64
                         || self.architecture == Architecture::X86_64h
+                } else if arch == &targ::Arch::mips32r6 {
+                    matches!(
+                        self.architecture,
+                        Architecture::Mips32(
+                            Mips32Architecture::Mipsisa32r6 | Mips32Architecture::Mipsisa32r6el
+                        )
+                    )
+                } else if arch == &targ::Arch::mips64r6 {
+                    matches!(
+                        self.architecture,
+                        Architecture::Mips64(
+                            Mips64Architecture::Mipsisa64r6 | Mips64Architecture::Mipsisa64r6el
+                        )
+                    )
                 } else {
                     match arch.0.parse::<Architecture>() {
                         Ok(a) => match (self.architecture, a) {
@@ -645,7 +659,7 @@ impl Expression {
     }
 }
 
-/// [`PartialEq`] will do a **syntactical** comparaison, so will just check if both
+/// [`PartialEq`] will do a **syntactical** comparison, so will just check if both
 /// expressions have been parsed from the same string, **not** if they are semantically
 /// equivalent.
 ///

@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- next-header -->
 ## [Unreleased] - ReleaseDate
+## [0.15.6] - 2024-01-02
+### Changed
+- [PR#66](https://github.com/EmbarkStudios/cfg-expr/pull/66) updated the builtin target list to 1.75.0.
+
 ## [0.15.5] - 2023-09-08
 ### Changed
 - [PR#64](https://github.com/EmbarkStudios/cfg-expr/pull/64) updated the builtin target list to 1.72.0. It also changed the MSRV to 1.70.0.
@@ -144,7 +148,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.1] - 2020-03-30
 ### Fixed
-- [PR#6](https://github.com/EmbarkStudios/cfg-expr/pull/6) fixed nested predicate evalution. Thanks [@sunshowers](https://github.com/sunshowers)!
+- [PR#6](https://github.com/EmbarkStudios/cfg-expr/pull/6) fixed nested predicate evaluation. Thanks [@sunshowers](https://github.com/sunshowers)!
 
 ## [0.2.0] - 2020-02-05
 ### Added
@@ -158,7 +162,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial add of all the things
 
 <!-- next-url -->
-[Unreleased]: https://github.com/EmbarkStudios/cfg-expr/compare/0.15.5...HEAD
+[Unreleased]: https://github.com/EmbarkStudios/cfg-expr/compare/0.15.6...HEAD
+[0.15.6]: https://github.com/EmbarkStudios/cfg-expr/compare/0.15.5...0.15.6
 [0.15.5]: https://github.com/EmbarkStudios/cfg-expr/compare/0.15.4...0.15.5
 [0.15.4]: https://github.com/EmbarkStudios/cfg-expr/compare/0.15.3...0.15.4
 [0.15.3]: https://github.com/EmbarkStudios/cfg-expr/compare/0.15.2...0.15.3
