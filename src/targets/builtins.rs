@@ -10,7 +10,7 @@
 
 use super::*;
 
-pub(crate) const RUSTC_VERSION: &str = "1.69.0";
+pub(crate) const RUSTC_VERSION: &str = "1.70.0";
 
 pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
@@ -240,6 +240,19 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         abi: None,
         arch: Arch::aarch64,
         env: Some(Env::musl),
+        vendor: Some(Vendor::unknown),
+        families: Families::unix,
+        pointer_width: 64,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_64_128_ptr,
+        panic: Panic::unwind,
+    },
+    TargetInfo {
+        triple: Triple::new_const("aarch64-unknown-linux-ohos"),
+        os: Some(Os::linux),
+        abi: None,
+        arch: Arch::aarch64,
+        env: Some(Env::ohos),
         vendor: Some(Vendor::unknown),
         families: Families::unix,
         pointer_width: 64,
@@ -729,6 +742,19 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         panic: Panic::unwind,
     },
     TargetInfo {
+        triple: Triple::new_const("armv7-unknown-linux-ohos"),
+        os: Some(Os::linux),
+        abi: None,
+        arch: Arch::arm,
+        env: Some(Env::ohos),
+        vendor: Some(Vendor::unknown),
+        families: Families::unix,
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_64_ptr,
+        panic: Panic::unwind,
+    },
+    TargetInfo {
         triple: Triple::new_const("armv7-unknown-linux-uclibceabi"),
         os: Some(Os::linux),
         abi: None,
@@ -1145,6 +1171,19 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         panic: Panic::unwind,
     },
     TargetInfo {
+        triple: Triple::new_const("i586-pc-nto-qnx700"),
+        os: Some(Os::nto),
+        abi: None,
+        arch: Arch::x86,
+        env: Some(Env::nto70),
+        vendor: Some(Vendor::unknown),
+        families: Families::unix,
+        pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_64_ptr,
+        panic: Panic::unwind,
+    },
+    TargetInfo {
         triple: Triple::new_const("i586-pc-windows-msvc"),
         os: Some(Os::windows),
         abi: None,
@@ -1361,6 +1400,19 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         vendor: Some(Vendor::wrs),
         families: Families::unix,
         pointer_width: 32,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_64_ptr,
+        panic: Panic::unwind,
+    },
+    TargetInfo {
+        triple: Triple::new_const("loongarch64-unknown-linux-gnu"),
+        os: Some(Os::linux),
+        abi: None,
+        arch: Arch::loongarch64,
+        env: Some(Env::gnu),
+        vendor: Some(Vendor::unknown),
+        families: Families::unix,
+        pointer_width: 64,
         endian: Endian::little,
         has_atomics: HasAtomics::atomic_8_16_32_64_ptr,
         panic: Panic::unwind,
@@ -1966,6 +2018,19 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("riscv64gc-unknown-freebsd"),
         os: Some(Os::freebsd),
+        abi: None,
+        arch: Arch::riscv64,
+        env: None,
+        vendor: Some(Vendor::unknown),
+        families: Families::unix,
+        pointer_width: 64,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_64_ptr,
+        panic: Panic::unwind,
+    },
+    TargetInfo {
+        triple: Triple::new_const("riscv64gc-unknown-fuchsia"),
+        os: Some(Os::fuchsia),
         abi: None,
         arch: Arch::riscv64,
         env: None,
@@ -2793,6 +2858,7 @@ impl super::Arch {
     pub const bpf: Arch = Arch::new_const("bpf");
     pub const e2k: Arch = Arch::new_const("e2k");
     pub const hexagon: Arch = Arch::new_const("hexagon");
+    pub const loongarch64: Arch = Arch::new_const("loongarch64");
     pub const m68k: Arch = Arch::new_const("m68k");
     pub const mips: Arch = Arch::new_const("mips");
     pub const mips64: Arch = Arch::new_const("mips64");
@@ -2887,7 +2953,9 @@ impl super::Env {
     pub const msvc: Env = Env::new_const("msvc");
     pub const musl: Env = Env::new_const("musl");
     pub const newlib: Env = Env::new_const("newlib");
+    pub const nto70: Env = Env::new_const("nto70");
     pub const nto71: Env = Env::new_const("nto71");
+    pub const ohos: Env = Env::new_const("ohos");
     pub const psx: Env = Env::new_const("psx");
     pub const relibc: Env = Env::new_const("relibc");
     pub const sgx: Env = Env::new_const("sgx");
