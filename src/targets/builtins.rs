@@ -10,7 +10,7 @@
 
 use super::*;
 
-pub(crate) const RUSTC_VERSION: &str = "1.87.0";
+pub(crate) const RUSTC_VERSION: &str = "1.88.0";
 
 pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
@@ -1917,7 +1917,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         abi: Some(Abi::abi64),
         arch: Arch::mips64,
         env: Some(Env::musl),
-        vendor: Some(Vendor::unknown),
+        vendor: Some(Vendor::openwrt),
         families: Families::unix,
         pointer_width: 64,
         endian: Endian::big,
@@ -3420,6 +3420,19 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
         panic: Panic::unwind,
     },
     TargetInfo {
+        triple: Triple::new_const("x86_64-lynx-lynxos178"),
+        os: Some(Os::lynxos178),
+        abi: None,
+        arch: Arch::x86_64,
+        env: None,
+        vendor: Some(Vendor::unknown),
+        families: Families::unix,
+        pointer_width: 64,
+        endian: Endian::little,
+        has_atomics: HasAtomics::atomic_8_16_32_64_ptr,
+        panic: Panic::abort,
+    },
+    TargetInfo {
         triple: Triple::new_const("x86_64-pc-cygwin"),
         os: Some(Os::cygwin),
         abi: None,
@@ -4002,6 +4015,7 @@ impl super::Vendor {
     pub const mti: Vendor = Vendor::new_const("mti");
     pub const nintendo: Vendor = Vendor::new_const("nintendo");
     pub const nvidia: Vendor = Vendor::new_const("nvidia");
+    pub const openwrt: Vendor = Vendor::new_const("openwrt");
     pub const pc: Vendor = Vendor::new_const("pc");
     pub const risc0: Vendor = Vendor::new_const("risc0");
     pub const sony: Vendor = Vendor::new_const("sony");
@@ -4032,6 +4046,7 @@ impl super::Os {
     pub const ios: Os = Os::new_const("ios");
     pub const l4re: Os = Os::new_const("l4re");
     pub const linux: Os = Os::new_const("linux");
+    pub const lynxos178: Os = Os::new_const("lynxos178");
     pub const macos: Os = Os::new_const("macos");
     pub const netbsd: Os = Os::new_const("netbsd");
     pub const nto: Os = Os::new_const("nto");
