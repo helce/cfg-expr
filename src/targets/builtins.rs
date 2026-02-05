@@ -10,7 +10,7 @@
 
 use super::*;
 
-pub(crate) const RUSTC_VERSION: &str = "1.89.0";
+pub(crate) const RUSTC_VERSION: &str = "1.90.0";
 
 pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
@@ -2317,7 +2317,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64-unknown-freebsd"),
         os: Some(Os::freebsd),
-        abi: None,
+        abi: Some(Abi::elfv2),
         arch: Arch::powerpc64,
         env: None,
         vendor: Some(Vendor::unknown),
@@ -2330,7 +2330,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64-unknown-linux-gnu"),
         os: Some(Os::linux),
-        abi: None,
+        abi: Some(Abi::elfv1),
         arch: Arch::powerpc64,
         env: Some(Env::gnu),
         vendor: Some(Vendor::unknown),
@@ -2343,7 +2343,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64-unknown-linux-musl"),
         os: Some(Os::linux),
-        abi: None,
+        abi: Some(Abi::elfv2),
         arch: Arch::powerpc64,
         env: Some(Env::musl),
         vendor: Some(Vendor::unknown),
@@ -2356,7 +2356,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64-unknown-openbsd"),
         os: Some(Os::openbsd),
-        abi: None,
+        abi: Some(Abi::elfv2),
         arch: Arch::powerpc64,
         env: None,
         vendor: Some(Vendor::unknown),
@@ -2369,7 +2369,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64-wrs-vxworks"),
         os: Some(Os::vxworks),
-        abi: None,
+        abi: Some(Abi::elfv1),
         arch: Arch::powerpc64,
         env: Some(Env::gnu),
         vendor: Some(Vendor::wrs),
@@ -2382,7 +2382,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64le-unknown-freebsd"),
         os: Some(Os::freebsd),
-        abi: None,
+        abi: Some(Abi::elfv2),
         arch: Arch::powerpc64,
         env: None,
         vendor: Some(Vendor::unknown),
@@ -2395,7 +2395,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64le-unknown-linux-gnu"),
         os: Some(Os::linux),
-        abi: None,
+        abi: Some(Abi::elfv2),
         arch: Arch::powerpc64,
         env: Some(Env::gnu),
         vendor: Some(Vendor::unknown),
@@ -2408,7 +2408,7 @@ pub const ALL_BUILTINS: &[TargetInfo] = &[
     TargetInfo {
         triple: Triple::new_const("powerpc64le-unknown-linux-musl"),
         os: Some(Os::linux),
-        abi: None,
+        abi: Some(Abi::elfv2),
         arch: Arch::powerpc64,
         env: Some(Env::musl),
         vendor: Some(Vendor::unknown),
@@ -3986,6 +3986,8 @@ impl super::Abi {
     pub const abiv2hf: Abi = Abi::new_const("abiv2hf");
     pub const eabi: Abi = Abi::new_const("eabi");
     pub const eabihf: Abi = Abi::new_const("eabihf");
+    pub const elfv1: Abi = Abi::new_const("elfv1");
+    pub const elfv2: Abi = Abi::new_const("elfv2");
     pub const fortanix: Abi = Abi::new_const("fortanix");
     pub const ilp32: Abi = Abi::new_const("ilp32");
     pub const ilp32e: Abi = Abi::new_const("ilp32e");
