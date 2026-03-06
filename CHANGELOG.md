@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- next-header -->
 ## [Unreleased] - ReleaseDate
+## [0.20.7] - 2026-03-06
 ### Changed
 - [PR#87](https://github.com/EmbarkStudios/cfg-expr/pull/87) updated the builtin target list to 1.94.0.
 
@@ -226,7 +227,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial add of all the things
 
 <!-- next-url -->
-[Unreleased]: https://github.com/EmbarkStudios/cfg-expr/compare/0.20.6...HEAD
+[Unreleased]: https://github.com/EmbarkStudios/cfg-expr/compare/0.20.7...HEAD
+[0.20.7]: https://github.com/EmbarkStudios/cfg-expr/compare/0.20.6...0.20.7
 [0.20.6]: https://github.com/EmbarkStudios/cfg-expr/compare/0.20.5...0.20.6
 [0.20.5]: https://github.com/EmbarkStudios/cfg-expr/compare/0.20.4...0.20.5
 [0.20.4]: https://github.com/EmbarkStudios/cfg-expr/compare/0.20.3...0.20.4
